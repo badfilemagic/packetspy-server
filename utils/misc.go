@@ -1,7 +1,14 @@
 package utils
 
-import "time"
+import (
+	"strings"
+	"time"
+)
 
-func PrintableDate(time.Time) string {
-	return ""
+func PrintableDate(t time.Time) string {
+	stamp := t.String()
+	fields := strings.Split(stamp, " ")
+	ret := strings.Join(fields[:2], "__")
+	ret = strings.Replace(ret, ":", "_", -1)
+	return ret
 }
